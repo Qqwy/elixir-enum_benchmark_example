@@ -1,5 +1,5 @@
 posts = for name <- 1..10_000 do
-               %{name: name, tags: [:rand.bytes(1), :rand.bytes(1), :rand.bytes(1)]}
+               %{name: name, tags: [%{name: :rand.bytes(1)}, %{name: :rand.bytes(1)}, %{name: :rand.bytes(1)}]}
             end
 
 Benchee.run(

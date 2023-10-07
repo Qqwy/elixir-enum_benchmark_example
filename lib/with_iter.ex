@@ -3,6 +3,7 @@ defmodule WithIter do
   def popular_tags(posts) do
     posts
     |> Iter.flat_map(fn post -> post.tags end)
+    |> Iter.map(fn tag -> tag.name end)
     |> Iter.frequencies()
     |> Iter.filter(fn {_tag, count} -> count > 1 end)
     |> Iter.map(&elem(&1, 0))
@@ -12,6 +13,7 @@ defmodule WithIter do
   def popular_tags2(posts) do
     posts
     |> Iter.flat_map(fn post -> post.tags end)
+    |> Iter.map(fn tag -> tag.name end)
     |> Iter.frequencies()
     |> Iter.match({tag, count} when count > 1, tag)
   end

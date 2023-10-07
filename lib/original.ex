@@ -2,7 +2,7 @@ defmodule Original do
   def popular_tags(posts) do
     for post <- posts,
         tag <- post.tags do
-      tag
+      tag.name
     end
     |> Enum.frequencies()
     |> Enum.filter(fn {_tag, count} -> count > 1 end)

@@ -3,7 +3,7 @@ defmodule WithFM do
     for post <- posts,
         tag <- post.tags,
         into: FrequenciesMap.new() do
-      tag
+      tag.name
     end
     |> Enum.reduce([], fn
     {tag, count}, acc when count > 1 -> 
