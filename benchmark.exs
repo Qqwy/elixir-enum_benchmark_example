@@ -4,7 +4,8 @@ posts = for name <- 1..10_000 do
 
 Benchee.run(
   %{
-    "Original" => fn -> Original.popular_tags(posts) end,
+    "Original (for)" => fn -> Original.popular_tags(posts) end,
+    "Original (Enum only)" => fn -> Original.popular_tags_enum(posts) end,
     "FrequenciesMap" => fn -> WithFM.popular_tags(posts) end,
     "Iter" => fn -> WithIter.popular_tags(posts) end,
     "Iter (match)" => fn -> WithIter.popular_tags2(posts) end,
